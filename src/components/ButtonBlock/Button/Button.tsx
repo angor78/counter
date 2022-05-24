@@ -1,12 +1,7 @@
 import React from "react";
 import s from './Button.module.css'
+import {ButtonPropsType} from "../../../App";
 
-
-type ButtonPropsType = {
-  setCountCallback: () => void
-  isDisabled: boolean
-  name: string
-}
 
 export const Button = (props: ButtonPropsType) => {
   const onClickHandle = () => {

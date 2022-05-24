@@ -2,10 +2,16 @@ import React, {useState} from 'react';
 import './App.css';
 import {Display} from "./components/Display/Display";
 import {ButtonBlock} from "./components/ButtonBlock/ButtonBlock";
+import {SetBlock} from "./components/SetBlock/SetBlock";
 
-export const MAXVALUE = 5
-export const STARTVALUE = 0
+export let MAXVALUE = 5
+export let STARTVALUE = 0
 
+export type ButtonPropsType = {
+  setCountCallback: () => void
+  isDisabled: boolean
+  name: string
+}
 
 function App() {
   const [count, setCount] = useState<number>(STARTVALUE)
@@ -23,15 +29,16 @@ function App() {
   return (
     <div className="App">
       <div className='body'>
+        <SetBlock/>
         <Display count={count}/>
         <ButtonBlock setCountCallback={setCountCallbackHandler}
                      setResetCallback={setResetCallbackHandler}
                      count={count}
         />
       </div>
+
     </div>
   );
 }
-
 
 export default App;
