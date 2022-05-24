@@ -1,0 +1,21 @@
+.display {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    height: 95px;
+    padding: 2px 8px;
+    color: darkorange;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 64px;
+}
+
+.displayEndCount {
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    height: 95px;
+    padding: 2px 8px;
+    color: red;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 64px;
+}
