@@ -1,0 +1,48 @@
+.display {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    width: 70%;
+    text-align: center;
+    margin: auto;
+    height: 95px;
+    padding: 2px 8px;
+    color: darkorange;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.inputItem {
+    grid-template-columns: 30% 60%;
+    text-align: right;
+    padding: 10px;
+}
+
+.baseInput {
+    background-color: lightgreen;
+    font-weight: bolder;
+    color: orangered;
+}
+
+.red {
+    background-color: red;
+    color: black;
+    font-weight: bolder;
+}
+
+.inputItem:first-child {
+    margin-top: 5px;
+    padding-bottom: 5px;
+}
+
+.inputItem:last-child {
+    padding-top: 5px;
+}
+
+.display input {
+    width: 80px;
+    text-align: center;
+}
+
+.inputItem span {
+    padding: 0;
+}
+
