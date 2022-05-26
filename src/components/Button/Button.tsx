@@ -1,6 +1,6 @@
 import React from "react";
 import s from './Button.module.css'
-import {ButtonPropsType} from "../../../App";
+import {ButtonPropsType} from "../../App";
 
 
 export const Button = (props: ButtonPropsType) => {
