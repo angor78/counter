@@ -1,14 +1,15 @@
 import React from "react";
 import s from './Display.module.css'
-import {MAXVALUE} from "../../App";
+import {CounterType} from "../../App";
 
-type DisplayPropsType={
-  count:number
+type DisplayPropsType = {
+  counter: CounterType
 }
-export const Display = (props: DisplayPropsType) => {
-  let displayClass = `${props.count<MAXVALUE?s.display:s.displayEndCount}`
-
+export const Display:React.FC<DisplayPropsType> = ({counter}) => {
+  let displayClass = `${counter.target > counter.current ? s.display :s.display + ' ' +s.red}`
   return (
-    <div className={displayClass}>{props.count}</div>
+    <div className={displayClass} >
+      {counter.current}
+    </div>
   )
 }
