@@ -1,7 +1,7 @@
 .display {
     display: grid;
     grid-template-rows: 50% 50%;
-    width: 70%;
+    width: 90%;
     text-align: center;
     margin: auto;
     height: 95px;
@@ -12,20 +12,24 @@
 
 .inputItem {
     grid-template-columns: 30% 60%;
-    text-align: right;
+    text-align: center;
     padding: 10px;
 }
 
 .baseInput {
     background-color: lightgreen;
     font-weight: bolder;
-    color: orangered;
+    color: black;
+    border: 2px solid darkorange;
+    outline: orangered;
 }
 
 .red {
     background-color: red;
     color: black;
     font-weight: bolder;
+    border: 2px solid darkorange;
+    outline: black;
 }
 
 .inputItem:first-child {
