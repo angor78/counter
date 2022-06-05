@@ -27,11 +27,11 @@ export const SetCounterDisplay = (props: SetCounterDisplayType) => {
   return (
     <div className={s.display}>
       <div className={s.inputItem}>
-        <span>start:   </span>
+        <span>&nbsp;&nbsp;start: </span>
         <input type="number" className={inputClass} onChange={onChangeStart} placeholder={'' + props.counter.start}/>
       </div>
       <div className={s.inputItem}>
-        <span>target:   </span>
+        <span>target: </span>
         <input type="number" className={inputClass} onChange={onChangeTarget}
                placeholder={'' + props.counter.target}/>
       </div>
