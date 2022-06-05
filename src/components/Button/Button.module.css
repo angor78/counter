@@ -19,7 +19,9 @@
 .default:active {
     color: gray;
     background-color: lightgrey;
+    box-shadow:none;
 }
+
 .default:disabled:active {
     color: gray;
 }
