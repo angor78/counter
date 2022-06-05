@@ -19,6 +19,7 @@ export type CounterType = {
 function App() {
 
   const [counter, setCounter] = useState<CounterType>({start: 0, current: 0, target: 5})
+  const [settingMode, setSettingMode] = useState<boolean>(false)
   useEffect(() => {
     let startValueString = localStorage.getItem('startValue')
     let targetValueString = localStorage.getItem('targetValue')
@@ -71,6 +72,7 @@ function App() {
         target: targetNumber
       })
     }
+    setSettingMode(false)
   }
 
   // function clearLocalStorage() {
@@ -80,15 +82,40 @@ function App() {
 
   return (
     <div className="App">
-      <div className='counterBlock'>
-        <SetCounterDisplay setStart={setStart} setTarget={setTarget} counter={counter}/>
-        <Button name={"set"} setCountCallback={getFromLocalStorage} isDisabled={!(isStartLessTarget && isPositive)}/>
-        {/*<Button name={"clear"} setCountCallback={clearLocalStorage} isDisabled={false}/>*/}
+      <div>
+        <div className='counterBlock'>
+          <SetCounterDisplay setStart={setStart} setTarget={setTarget} counter={counter}/>
+          <Button name={"set"} setCountCallback={getFromLocalStorage} isDisabled={!(isStartLessTarget && isPositive)}/>
+          {/*<Button name={"clear"} setCountCallback={clearLocalStorage} isDisabled={false}/>*/}
+        </div>
+        <div className='counterBlock'>
+          <Display counter={counter}/>
+          <Button name={"inc..+"} setCountCallback={setCountCallbackHandler}
+                  isDisabled={counter.current >= counter.target}/>
+          <Button name={"reset"} setCountCallback={resetCallbackHandler} isDisabled={false}/>
+        </div>
       </div>
-      <div className='counterBlock'>
-        <Display counter={counter}/>
-        <Button name={"inc..+"} setCountCallback={setCountCallbackHandler} isDisabled={counter.current >= counter.target}/>
-        <Button name={"reset"} setCountCallback={resetCallbackHandler} isDisabled={false}/>
+      <div>
+        {settingMode
+          ? (
+          <div className='counterBlock'>
+            <SetCounterDisplay setStart={setStart} setTarget={setTarget} counter={counter}/>
+            <Button name={"set"} setCountCallback={getFromLocalStorage}
+                    isDisabled={!(isStartLessTarget && isPositive)}/>
+            {/*<Button name={"clear"} setCountCallback={clearLocalStorage} isDisabled={false}/>*/}
+          </div>)
+          : (
+          <div className='counterBlock'>
+            <Display counter={counter}/>
+            <Button name={"inc..+"} setCountCallback={setCountCallbackHandler}
+                    isDisabled={counter.current >= counter.target}/>
+            <Button name={"reset"} setCountCallback={resetCallbackHandler} isDisabled={false}/>
+            <Button name={"set"} setCountCallback={()=>setSettingMode(true)} isDisabled={false}/>
+          </div>
+        )
+        }
+
+
       </div>
 
     </div>
