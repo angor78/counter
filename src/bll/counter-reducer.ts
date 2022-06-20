@@ -4,25 +4,55 @@ const initialState = {
   target: 0
 }
 export type InitialStateType = typeof initialState
-
 export const counterReducer = (state: InitialStateType = initialState, action: ActionType): InitialStateType => {
   switch (action.type) {
-    case 'INC':
-      return {...state, start: state.start + 1}
+    case 'INC-VALUE':
+      return {...state, current: state.current + 1}
+    case 'START-VALUE':
+      return {...state, start: action.startValue}
+    case 'TARGET-VALUE':
+      return {...state, target: action.targetValue}
+    case 'SET-CURRENT-VALUE':
+      return {...state, current: state.start}
     case "SET-VALUES-FROM-LOCAL-STORAGE":
-      return {...state, start: action.startValue, target: action.targetValue}
+      return {...state, current: action.currentValue}
     default:
       return state
 
   }
 }
-export type ActionType = IncValueACType | SetValuesFromLocalStorageACType
-export type IncValueACType = ReturnType<typeof incValueAC>
-export const incValueAC = () => {
-  return {type: 'INC'} as const
+
+//ACTION CREATOR
+export type ActionType = IncCurrentValueACType |
+  SetValuesFromLocalStorageACType |
+  GetStartACType |
+  GetTargetACType |
+  SetCurrentValueACType
+
+export type IncCurrentValueACType = ReturnType<typeof incCurrentValueAC>
+export const incCurrentValueAC = () => {
+  return {type: 'INC-VALUE'} as const
 }
 
-export type SetValuesFromLocalStorageACType = ReturnType<typeof setValuesFromLocalStorageAC>
-export const setValuesFromLocalStorageAC = (startValue: number, targetValue: number) => {
-  return {type: 'SET-VALUES-FROM-LOCAL-STORAGE', startValue, targetValue} as const
+export type GetStartACType = ReturnType<typeof getStartAC>
+export const getStartAC = (startValue: number) => {
+  return {type: 'START-VALUE', startValue} as const
 }
+
+export type GetTargetACType = ReturnType<typeof getTargetAC>
+export const getTargetAC = (targetValue: number) => {
+  return {type: 'TARGET-VALUE', targetValue} as const
+}
+
+export type SetCurrentValueACType = ReturnType<typeof setCurrentValueAC>
+export const setCurrentValueAC = () => {
+  return {type: 'SET-CURRENT-VALUE'} as const
+}
+
+
+export type SetValuesFromLocalStorageACType = ReturnType<typeof setValuesFromLocalStorageAC>
+export const setValuesFromLocalStorageAC = (currentValue: number) => {
+  return {type: 'SET-VALUES-FROM-LOCAL-STORAGE', currentValue} as const
+}
+
+
